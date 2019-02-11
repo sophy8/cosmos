@@ -1,0 +1,18 @@
+.main-content{
+    --background: url('../../assets/main.jpeg') no-repeat fixed center/cover;
+    h2,h5{
+        color: white;
+        text-align: center;
+    }
+    ion-item{
+        --background:transparent;
+        color: white;
+    }
+    .calendar{
+        input{
+            border: none;
+            background: transparent;
+            color: white;
+        }
+    }
+}
