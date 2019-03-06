@@ -8,13 +8,17 @@ import { SearchPage } from './search.page';
 import { FindItemComponent } from './find-item/find-item.component';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {FlightService} from '../service/flight.service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchRoutingModule,FormsModule, ReactiveFormsModule,IonicSelectableModule,BsDatepickerModule.forRoot()
+    SearchRoutingModule,HttpClientModule,FormsModule, ReactiveFormsModule,IonicSelectableModule,BsDatepickerModule.forRoot()
   ],
-  declarations: [SearchPage, FindItemComponent]
+  declarations: [SearchPage, FindItemComponent],
+  providers:[FlightService]
 })
 export class SearchPageModule {}

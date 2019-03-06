@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FlightService } from '../../service/flight.service';
 @Component({
   selector: 'app-find-item',
   templateUrl: './find-item.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private flightService: FlightService) { }
 
   ngOnInit() {
+    this.getAllFlight();
   }
-
+  getAllFlight() {
+    this.flightService.getAllFlights().subscribe((res) => {
+      console.log(res);
+    });
+  }
 }

@@ -2,24 +2,24 @@
 <ion-content class="main-content">
 <h2>Do you want to explore Universe?</h2>
 <h5>Everything what you just need it is start the adventure...</h5>
-<form action="">
+<form [formGroup]="form" (ngSubmit)="search(form.value)">
   <ion-item>
     <ion-label>Return</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="brown">One Way</ion-select-option>
-      <ion-select-option value="blonde">Multicity</ion-select-option>
+    <ion-select  formControlName="return" okText="Okay" cancelText="Dismiss">
+      <ion-select-option>One Way</ion-select-option>
+      <ion-select-option >Multicity</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>From</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="brown">Earth</ion-select-option>
-      <ion-select-option value="blonde">Mars</ion-select-option>
+    <ion-select  formControlName="from" okText="Okay" cancelText="Dismiss">
+      <ion-select-option >Earth</ion-select-option>
+      <ion-select-option >Mars</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Port</ion-label>
-    <ionic-selectable
+    <ionic-selectable formControlName="port" 
     #portComponent
       [(ngModel)]="port"
       [items]="ports"
@@ -32,12 +32,14 @@
 <ion-item>
   <div class="calendar">
     <div >
-      <input class="form-control" #drp="bsDaterangepicker" [ngModelOptions]="{standalone: true}" name="datepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+      <input formControlName="date" class="form-control" #drp="bsDaterangepicker"  name="datepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
     </div>
     <!-- <div >
       <button class="btn btn-success" (click)="drp.toggle()" [attr.aria-expanded]="drp.isOpen">Date Range Picker</button>
     </div> -->
   </div>
 </ion-item>
+<!-- routerDirection="" -->
+ <ion-button type="submit" color="primary" size="large"> Search ... </ion-button>
 </form>
 </ion-content>
