@@ -12,6 +12,13 @@ var mongoose = require('mongoose'),
             required: true,
             max: 50
         },
+        port:{
+            type: Array,
+            required: true
+        },
+        date:{
+          type: Date, default: Date.now 
+        },
         to: {
             type: String,
             required: true
