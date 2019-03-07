@@ -1,6 +1,15 @@
 
-var monoose = require('mongoose');
-var Shema= monoose.Schema;
+var mongoose = require('mongoose'),
+    Schema= mongoose.Schema;
 
-PlanetShema = new Shema({});
+PlanetSchema = new Schema({
+    id:{
+        type:Number
+    },
+    name: {
+        type: String,
+        required: true,
+        max: 50
+    }
+});
 module.exports = mongoose.model('Planet', PlanetSchema);

@@ -5,16 +5,21 @@
 <form [formGroup]="form" (ngSubmit)="search(form.value)">
   <ion-item>
     <ion-label>Return</ion-label>
-    <ion-select  formControlName="return" okText="Okay" cancelText="Dismiss">
+    <ion-select  formControlName="return" okText="Okay" cancelText="Dismiss" >
       <ion-select-option>One Way</ion-select-option>
       <ion-select-option >Multicity</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>From</ion-label>
-    <ion-select  formControlName="from" okText="Okay" cancelText="Dismiss">
-      <ion-select-option >Earth</ion-select-option>
-      <ion-select-option >Mars</ion-select-option>
+    <ion-select  formControlName="from" okText="Okay" cancelText="Dismiss" (ionChange)="onChange($event)" >
+      <ion-select-option  *ngFor="let planet of planets | availablePlanet :flights" >{{planet.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>To</ion-label>
+    <ion-select  formControlName="to" okText="Okay" cancelText="Dismiss"   >
+      <ion-select-option *ngFor="let planet of planets | availablePlanetTo : flights : selectedFrom" >{{planet.name}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>

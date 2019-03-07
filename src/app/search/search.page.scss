@@ -16,7 +16,19 @@
         }
     }
 
-}   
+}  
+::ng-deep bs-daterangepicker-container{
+    position: absolute;
+    display: flex!important;
+    justify-content: center;
+    top: 30%!important;
+    width: 100%;
+    left: 0!important;
+    right: 0px;
+    background: white;
+} 
+
+
 // ::ng-deep ion-modal{
 //     &.modal{
 //         display: block;

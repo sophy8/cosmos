@@ -3,6 +3,8 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { PlanetService } from '../service/planet.service';
+import { FlightService } from '../service/flight.service';
 
 class Port {
   public id: number;
@@ -21,14 +23,21 @@ export class SearchPage implements OnInit {
   bsRangeValue: Date[];
   maxDate = new Date();
   form: FormGroup;
+  selectedFrom;
   @ViewChild('portComponent') portComponent: IonicSelectableComponent;
-  constructor(private fb: FormBuilder, private loadingController: LoadingController) { }
+  constructor(private fb: FormBuilder, private flightService: FlightService,
+    private loadingController: LoadingController, private planetService: PlanetService) { }
   ports: Port[];
   port: Port;
+  planets = [];
+  flights = [];
   ngOnInit() {
+    this.setPlanet();
+    this.setAllFlight();
     this.form = this.fb.group({
       'return': [null, Validators.required],
       'from': [null, Validators.required],
+      'to': [null, Validators.required],
       'port': [null, Validators.required],
       'date': [null, Validators.required]
     });
@@ -53,5 +62,18 @@ export class SearchPage implements OnInit {
     console.log(value);
     loading.present();
     loading.dismiss();
+  }
+  setPlanet() {
+    this.planetService.getAllPlanets().subscribe((res: any[]) => {
+      this.planets = res;
+    });
+  }
+  setAllFlight() {
+    this.flightService.getAllFlights().subscribe((res: any[]) => {
+      this.flights = res;
+    });
+  }
+  onChange(event) {
+    this.selectedFrom = event.detail.value;
   }
 }
