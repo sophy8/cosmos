@@ -13,16 +13,17 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PlanetService } from '../service/planet.service';
 import { AvailablePlanetPipe } from '../pipes/available-planet.pipe';
 import { AvailablePlanetToPipe } from '../pipes/available-planet-to.pipe';
-
+import { MaterialModule } from '../../app/modules//material/material.module';
+import { DataService } from '../service/data.service';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchRoutingModule, HttpClientModule, FormsModule,
+    SearchRoutingModule, HttpClientModule, FormsModule, MaterialModule,
     ReactiveFormsModule, IonicSelectableModule, BsDatepickerModule.forRoot()
   ],
   declarations: [SearchPage, FindItemComponent, AvailablePlanetPipe, AvailablePlanetToPipe],
-  providers: [FlightService, PlanetService]
+  providers: [FlightService, PlanetService, DataService]
 })
 export class SearchPageModule { }

@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from '../../service/flight.service';
+import { DataService } from 'src/app/service/data.service';
 @Component({
   selector: 'app-find-item',
   templateUrl: './find-item.component.html',
   styleUrls: ['./find-item.component.scss']
 })
 export class FindItemComponent implements OnInit {
-
-  constructor(private flightService: FlightService) { }
+message;
+  constructor(private flightService: FlightService, private data: DataService) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message);
+    console.log(this.message);
     this.getAllFlight();
   }
   getAllFlight() {

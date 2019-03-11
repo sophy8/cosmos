@@ -3,7 +3,7 @@ var express = require('express'),
     connections = mongoose.connection,
     bodyParser = require("body-parser"),
     app = express(),
-    apiRouterBook = require('./book.js');
+    apiRouterGallery = require('./gallery.js');
     apiRouterPlanet = require('./componnts/planet.js');
     mongoose.connect('mongodb://localhost:27017/gallery', {
             useNewUrlParser: true
@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
     next();
 });
-app.use('/api/gallery', apiRouterBook);
+app.use('/api/gallery', apiRouterGallery);
 app.use('/api/planet', apiRouterPlanet);
 
 

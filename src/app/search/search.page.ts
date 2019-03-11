@@ -5,6 +5,8 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { PlanetService } from '../service/planet.service';
 import { FlightService } from '../service/flight.service';
+import { DataService } from '../service/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 class Port {
   public id: number;
@@ -25,7 +27,7 @@ export class SearchPage implements OnInit {
   form: FormGroup;
   selectedFrom;
   @ViewChild('portComponent') portComponent: IonicSelectableComponent;
-  constructor(private fb: FormBuilder, private flightService: FlightService,
+  constructor(private fb: FormBuilder, private flightService: FlightService, private router: Router, private data: DataService,
     private loadingController: LoadingController, private planetService: PlanetService) { }
   ports: Port[];
   port: Port;
@@ -38,8 +40,8 @@ export class SearchPage implements OnInit {
       'return': [null, Validators.required],
       'from': [null, Validators.required],
       'to': [null, Validators.required],
-      'port': [null, Validators.required],
-      'date': [null, Validators.required]
+      'date_from': [null, Validators.required],
+      'date_to': [null],
     });
     this.ports = [
       { id: 1, name: 'Tokai' },
@@ -59,7 +61,12 @@ export class SearchPage implements OnInit {
     const loading = await this.loadingController.create({
       message: "Loading..."
     });
-    console.log(value);
+
+    this.flightService.getFlights(value).subscribe((res) => {
+      this.data.changeMessage(res);
+      console.log(res);
+    });
+    this.router.navigate([`/search/item`]);
     loading.present();
     loading.dismiss();
   }

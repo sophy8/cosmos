@@ -22,7 +22,7 @@
       <ion-select-option *ngFor="let planet of planets | availablePlanetTo : flights : selectedFrom" >{{planet.name}}</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label>Port</ion-label>
     <ionic-selectable formControlName="port" 
     #portComponent
@@ -33,18 +33,34 @@
       [canSearch]="true"
       (onChange)="portChange($event)">
     </ionic-selectable>
-  </ion-item>
-<ion-item>
+  </ion-item> -->
+<!-- <ion-item>
   <div class="calendar">
     <div >
       <input formControlName="date" class="form-control" #drp="bsDaterangepicker"  name="datepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
     </div>
-    <!-- <div >
+     <div >
       <button class="btn btn-success" (click)="drp.toggle()" [attr.aria-expanded]="drp.isOpen">Date Range Picker</button>
-    </div> -->
+    </div> 
   </div>
+</ion-item> -->
+<ion-item>
+  <mat-form-field class="datepicker" >
+    <input matInput [matDatepicker]="picker" formControlName="date_from"  placeholder="Choose a depart date">
+    <mat-datepicker-toggle matSuffix [for]="picker">
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</ion-item>
+<ion-item *ngIf="this.form.controls['return'].value==='Multicity'">
+  <mat-form-field class="datepicker"  >
+    <input matInput [matDatepicker]="pickers" formControlName="date_to" placeholder="Choose a return date">
+    <mat-datepicker-toggle matSuffix [for]="pickers">
+    </mat-datepicker-toggle>
+    <mat-datepicker #pickers></mat-datepicker>
+  </mat-form-field>
 </ion-item>
 <!-- routerDirection="" -->
- <ion-button type="submit" color="primary" size="large"> Search ... </ion-button>
+ <ion-button type="submit" size="large"> Search ... </ion-button>
 </form>
 </ion-content>

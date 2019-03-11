@@ -11,10 +11,15 @@ router.get('/', function(req, res, next) {
                 res.json(issues);})
 });
 router.post('/', function(req, res, next) {
-    Gallery.create(req.body, function (err, post) {
-      if (err) return next(err);
-      res.json(post);
-    });
+    // Gallery.create(req.body, function (err, post) {
+    //   if (err) return next(err);
+    //   else
+      Gallery.find((err, issues) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(issues);})
+    // });
   });
   
 module.exports = router;

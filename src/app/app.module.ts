@@ -10,11 +10,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-
+import { MaterialModule } from '../app/modules//material/material.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,BrowserAnimationsModule, MatButtonModule, MatCheckboxModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+     BrowserAnimationsModule, MaterialModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -22,4 +23,4 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
