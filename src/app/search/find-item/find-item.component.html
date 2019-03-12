@@ -1,6 +1,59 @@
-
 <ion-content>
-  <p>
-    find-item works!
-  </p>
+  <div *ngFor="let i of availableFlight">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Available Flight</ion-card-subtitle>
+        <ion-card-title>
+            <div>
+              <ion-icon name="planet"></ion-icon>{{i.from}}
+            </div>
+            <ion-icon class="plane" name="jet"></ion-icon>
+            <div>
+              <ion-icon name="planet"></ion-icon>{{i.to}}
+            </div>
+          </ion-card-title>
+      </ion-card-header>     
+    <ion-card-content>
+        <div class="description">{{i.description}}</div> 
+        <div class="price">
+          <div class="title">Price</div>
+          <div class="number">{{i.price}}$</div>
+        </div>
+        <div class="buttons">
+          <button class="buy">Buy a ticket</button>
+          <button class="buy">Details</button>
+        </div>
+        </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Available Flight</ion-card-subtitle>
+      <ion-card-title>
+        <div>
+          <ion-icon name="planet"></ion-icon>Mars
+        </div>
+        <ion-icon class="plane" name="jet"></ion-icon>
+        <div>
+          <ion-icon name="planet"></ion-icon>Jupiter
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+    <div class="description">gfcvghbjhj hfh guhj</div> 
+    <div class="price">
+      <div class="title">Price</div>
+      <div class="number">230$</div>
+    </div>
+    <div class="buttons">
+      <button class="buy">Buy a ticket</button>
+      <button class="buy">Details</button>
+    </div>
+    </ion-card-content>
+    
+  </ion-card>
+
 </ion-content>

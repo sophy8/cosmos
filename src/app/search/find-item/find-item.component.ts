@@ -7,12 +7,11 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./find-item.component.scss']
 })
 export class FindItemComponent implements OnInit {
-message;
+availableFlight;
   constructor(private flightService: FlightService, private data: DataService) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.message = message);
-    console.log(this.message);
+    this.data.currentMessage.subscribe(message => this.availableFlight = message);
     this.getAllFlight();
   }
   getAllFlight() {
