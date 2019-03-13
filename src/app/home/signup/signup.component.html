@@ -1,0 +1,23 @@
+<p>
+  signup works!
+</p>
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm.value)">
+    <ion-item>
+      <ion-label position="floating">Name
+      </ion-label>
+      <ion-input  required formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email
+      </ion-label>
+      <ion-input type="email" required formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password
+      </ion-label>
+      <ion-input type="password" required formControlName="password"></ion-input>
+    </ion-item>
+    <button type="submit">Sign Up</button>
+  </form>
+</ion-content>

@@ -7,6 +7,8 @@ import { PlanetService } from '../service/planet.service';
 import { FlightService } from '../service/flight.service';
 import { DataService } from '../service/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { min } from 'rxjs/operators';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 class Port {
   public id: number;
@@ -25,7 +27,10 @@ export class SearchPage implements OnInit {
   bsRangeValue: Date[];
   maxDate = new Date();
   form: FormGroup;
+  minDate = new Date();
   selectedFrom;
+  minDateMulticity = new Date();
+  dateFilterDeparture;
   @ViewChild('portComponent') portComponent: IonicSelectableComponent;
   constructor(private fb: FormBuilder, private flightService: FlightService, private router: Router, private data: DataService,
     private loadingController: LoadingController, private planetService: PlanetService) { }
@@ -34,14 +39,16 @@ export class SearchPage implements OnInit {
   planets = [];
   flights = [];
   ngOnInit() {
+    console.log(this.minDate);
     this.setPlanet();
     this.setAllFlight();
     this.form = this.fb.group({
       'return': [null, Validators.required],
       'from': [null, Validators.required],
       'to': [null, Validators.required],
-      'date_from': [null, Validators.required],
-      'date_to': [null],
+      'date_from': [null, Validators.compose([Validators.required,
+      ])],
+      'date_to': [null]
     });
     this.ports = [
       { id: 1, name: 'Tokai' },
@@ -51,6 +58,11 @@ export class SearchPage implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsRangeValue = [this.bsValue, this.maxDate];
   }
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+   console.log(event.value);
+  this.minDateMulticity.setDate(event.value.getDate());
+  }
+  dateFilterArrival = (date: Date) => date >= this.minDateMulticity;
   portChange(event: {
     component: IonicSelectableComponent,
     value: any

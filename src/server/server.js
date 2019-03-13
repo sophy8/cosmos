@@ -5,6 +5,8 @@ var express = require('express'),
     app = express(),
     apiRouterGallery = require('./gallery.js');
     apiRouterPlanet = require('./componnts/planet.js');
+    apiRouterSignup = require('./componnts/signup.js');
+    apiRouterLogin= require('./componnts/login.js');
     mongoose.connect('mongodb://localhost:27017/gallery', {
             useNewUrlParser: true
         }) .then(() =>  console.log('connection successful'))
@@ -27,7 +29,8 @@ app.use(function (req, res, next) {
 });
 app.use('/api/gallery', apiRouterGallery);
 app.use('/api/planet', apiRouterPlanet);
-
+app.use('/api/register', apiRouterSignup);
+app.use('/api/login', apiRouterLogin);
 
 app.use(function(req, res, next) {
   next(createError(404));
