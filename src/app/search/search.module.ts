@@ -15,6 +15,7 @@ import { AvailablePlanetPipe } from '../pipes/available-planet.pipe';
 import { AvailablePlanetToPipe } from '../pipes/available-planet-to.pipe';
 import { MaterialModule } from '../../app/modules//material/material.module';
 import { DataService } from '../service/data.service';
+import {AuthGuardService } from '../service/auth-guard.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +25,6 @@ import { DataService } from '../service/data.service';
     ReactiveFormsModule, IonicSelectableModule, BsDatepickerModule.forRoot()
   ],
   declarations: [SearchPage, FindItemComponent, AvailablePlanetPipe, AvailablePlanetToPipe],
-  providers: [FlightService, PlanetService, DataService]
+  providers: [FlightService, PlanetService, DataService, AuthGuardService]
 })
 export class SearchPageModule { }

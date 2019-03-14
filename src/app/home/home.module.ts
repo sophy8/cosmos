@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
+import { MatVideoModule } from 'mat-video';
 
 import { HomePage } from './home.page';
 import { LoginComponent } from './login/login.component';
@@ -15,8 +16,8 @@ import { RegisterService } from '../service//register.service';
   imports: [
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    IonicModule, HttpClientModule,
-    HomeRoutingModule,IonicStorageModule.forRoot(),
+    IonicModule, HttpClientModule, MatVideoModule,
+    HomeRoutingModule, IonicStorageModule.forRoot(),
     RouterModule.forChild([
       {
         path: '',

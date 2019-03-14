@@ -1,12 +1,34 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+Cosmos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <video [autoplay]="true" [muted]="true" [loop]="true" src="assets/video.mp4" [controls]="false" id="myVideo">
-      </video>
-</ion-content>
+<ion-content >
+  <div class="content">
+      <!-- <mat-video class="background-video" [loop]="true" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="false" color="accent" src="assets/video2.mp4">
+      </mat-video> -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <div class="img"></div>
+            </ion-card-title>
+        </ion-card-header>     
+      <ion-card-content>
+        <div class="possibilities">
+          <button class="button-on-main register" routerLink="/home/signup/" routerDirection="forward">Register</button>
+          <button class="button-on-main" routerLink="/home/login/">Log In</button>
+        </div>
+        <div class="available">
+          <div class="available-text">See what flights are available</div>
+          <button class="button-on-main" routerLink="/search">See more...</button>
+        </div>
+          </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="rocket-container">
+      <div class="rocket"></div>
+    </div>
+    </ion-content>
