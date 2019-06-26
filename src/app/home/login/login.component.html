@@ -1,11 +1,17 @@
 <ion-header>
     <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+          </ion-buttons>
       <ion-title>
   Cosmos Login
       </ion-title>
     </ion-toolbar>
   </ion-header>
 <ion-content>
+  <div class="contain">
+  <ion-card>
+    <ion-card-content>
   <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm.value)">
     <ion-item>
       <ion-label position="floating">Email
@@ -17,6 +23,11 @@
       </ion-label>
       <ion-input type="password" required formControlName="password"></ion-input>
     </ion-item>
-    <button type="submit">Sign Up</button>
+    <div class="submit">
+        <button type="submit">Log in</button>
+    </div>
   </form>
+</ion-card-content>
+</ion-card>
+</div>
 </ion-content>

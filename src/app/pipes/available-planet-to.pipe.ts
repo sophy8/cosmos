@@ -10,9 +10,11 @@ export class AvailablePlanetToPipe implements PipeTransform {
     if (args) {
       args.forEach((el) => {
         value.forEach(element => {
-          if (el.to === element.name && el.from === availableFrom ) {
-            array.push(element);
-            return array;
+          if (availableFrom) {
+            if (el.to === element.name && el.from === availableFrom.name) {
+              array.push(element);
+              return array;
+            }
           }
         });
       });

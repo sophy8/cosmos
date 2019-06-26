@@ -1,0 +1,26 @@
+ion-card, form{
+    width: 100%;
+    background-color: white;
+}
+ion-content{
+    --background:rgb(9, 63, 81);
+}
+.contain{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    button{
+        height: 30px;
+        width: 150px;
+        background: transparent;
+        background: white;
+        border-radius: 20px;
+        border: 1px solid rgb(9,63, 81);
+    }
+}
