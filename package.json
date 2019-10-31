@@ -36,7 +36,7 @@
     "ion2-calendar": "^3.0.0-rc.0",
     "ionic-selectable": "^4.2.0",
     "mat-video": "^2.6.0",
-    "mongoose": "^5.4.17",
+    "mongoose": "^5.7.5",
     "ngx-bootstrap": "^3.2.0",
     "nodemon": "^1.18.10",
     "rxjs": "~6.4.0",
